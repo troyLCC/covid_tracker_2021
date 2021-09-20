@@ -10,6 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import SearchBar from "./components/SearchBar";
 function App() {
   const [allData, setAllData] = useState([]);
   const [filterData, setFilterData] = useState([]);
@@ -57,7 +58,8 @@ function App() {
 
   return (
     <div>
-      <input type="text" ref={userInput} />
+      {/* <input type="text" ref={userInput} /> */}
+      <SearchBar />
       <label htmlFor="from">From</label>
       <input type="date" id="from" ref={from} />
       <label htmlFor="to">To</label>
