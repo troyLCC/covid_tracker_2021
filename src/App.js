@@ -12,6 +12,7 @@ import {
 } from "recharts";
 import SearchBar from "./components/SearchBar";
 import Form from "./components/Form";
+import Chart from "./components/Chart";
 function App() {
   const [allData, setAllData] = useState([]);
   const [filterData, setFilterData] = useState([]);
@@ -64,8 +65,7 @@ function App() {
   const clickHandler = (from, to) => {
     setFromDate(from);
     setToDate(to);
-    console.log(fromDate);
-    console.log(toDate);
+
     fetchAPI(countryName);
   };
   // interval={"preserveStartEnd"}
@@ -76,32 +76,7 @@ function App() {
       {allData.length === 0 ? (
         <h1>Please enter a valid name and date </h1>
       ) : (
-        <ResponsiveContainer width="100%" aspect={3}>
-          <LineChart
-            data={filterData}
-            width={400}
-            height={300}
-            margin={{ top: 10, right: 300, left: 20, bottom: 5 }}
-          >
-            <CartesianGrid stroke="#eee" strokeDasharray="5 3" />
-            <XAxis dataKey="date" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line
-              type="monotone"
-              dataKey="cases"
-              stroke="#8884d8"
-              activeDot={{ r: 5 }}
-            />
-            <Line
-              type="monotone"
-              dataKey="deaths"
-              stroke="#FF2E2E"
-              activeDot={{ r: 5 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <Chart data={filterData} />
       )}
       <SearchBar getCountryName={changeCountryName} />
       <Form onSubmitHandler={clickHandler} />
