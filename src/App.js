@@ -1,31 +1,24 @@
 // import "./App.css";
-import React, { useEffect, useRef, useState } from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts";
+import React, { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar";
 import Form from "./components/Form";
 import Chart from "./components/Chart";
+import styles from "./App.module.css";
+import covid from "./assets/img/covid.jpg";
+import Footer from "./components/Footer";
 function App() {
+  //Use States
   const [allData, setAllData] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [countryName, setCountryName] = useState("");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
-  // const userInput = useRef("");
 
+  //Functions
   const changeCountryName = (name) => {
     setCountryName(name);
     console.log(countryName);
   };
-
   useEffect(() => {
     let tempData = [];
     allData.map((data) => {
@@ -49,7 +42,6 @@ function App() {
       }
     });
     setFilterData(tempData);
-    console.log(filterData);
   }, [allData]);
 
   async function fetchAPI(country) {
@@ -71,15 +63,28 @@ function App() {
   // interval={"preserveStartEnd"}
   return (
     <div>
-      {/* <input type="text" ref={userInput} /> */}
-
       {allData.length === 0 ? (
-        <h1>Please enter a valid name and date </h1>
+        <div className={styles.front_page}>
+          <img src={covid} alt="" />
+          <h1>World COVID Tracker</h1>
+          <p>
+            Please enter the country name and start and ending date to visualize
+            covid data. You can see data upto 3 months
+          </p>
+        </div>
       ) : (
-        <Chart data={filterData} />
+        <div className={styles.graph}>
+          <h1>{countryName}</h1>
+          <Chart data={filterData} />
+        </div>
       )}
-      <SearchBar getCountryName={changeCountryName} />
-      <Form onSubmitHandler={clickHandler} />
+      <div className={styles.form_wrapper}>
+        <div className={styles.form_container}>
+          <SearchBar getCountryName={changeCountryName} />
+          <Form onSubmitHandler={clickHandler} />
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }

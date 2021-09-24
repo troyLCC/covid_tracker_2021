@@ -1,0 +1,31 @@
+.form {
+}
+
+.date1 {
+  margin-right: 15px;
+}
+.date {
+  margin-left: 15px;
+}
+.date1,
+.date2 {
+  display: inline-block;
+  height: 35px;
+  width: 180px;
+  font-size: 17px;
+  padding: 2px 8px;
+  margin-top: 8px;
+  border: 2px solid #4a2545;
+  border-radius: 10px;
+}
+.button {
+  display: inline-block;
+  padding: 5px 35px;
+  font-size: 1.3em;
+  margin: 3px 10px;
+  outline: none;
+  border: 2px solid #4a2545;
+  border-radius: 15px;
+  justify-content: center;
+  vertical-align: middle;
+}

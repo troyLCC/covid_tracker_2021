@@ -9,16 +9,22 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import styles from "./Chart.module.css";
 const Chart = (props) => {
   return (
-    <ResponsiveContainer width="100%" aspect={3}>
+    <ResponsiveContainer
+      className={styles.chat_container}
+      aspect={3}
+      width={1200}
+      height="70%"
+    >
       <LineChart
+        width={600}
+        height={500}
         data={props.data}
-        width={400}
-        height={300}
-        margin={{ top: 10, right: 300, left: 20, bottom: 5 }}
+        margin={{ top: 10, right: 150, left: 85, bottom: 5 }}
       >
-        <CartesianGrid stroke="#eee" strokeDasharray="5 3" />
+        <CartesianGrid stroke="#eee" strokeDasharray="3 3" />
         <XAxis dataKey="date" />
         <YAxis />
         <Tooltip />
