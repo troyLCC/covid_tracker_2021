@@ -1,12 +1,18 @@
 import React, { Fragment, useState } from "react";
 import { CountryData } from "../data/CountryData";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const [isValid, setIsValid] = useState(false);
-  const onChangeHandler = (e) => {};
+
   return (
     <Fragment>
-      <input list="suggestions" onChange={onChangeHandler} />
+      <input
+        list="suggestions"
+        onChange={(event) => {
+          props.getCountryName(event.target.value);
+          console.log(event.target.value);
+        }}
+      />
       <datalist id="suggestions">
         {CountryData.map((country) => {
           return <option value={country.Country}> </option>;

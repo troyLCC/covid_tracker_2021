@@ -14,9 +14,15 @@ import SearchBar from "./components/SearchBar";
 function App() {
   const [allData, setAllData] = useState([]);
   const [filterData, setFilterData] = useState([]);
+  const [countryName, setCountryName] = useState("");
   const userInput = useRef("");
   const from = useRef("");
   const to = useRef("");
+
+  const changeCountryName = (name) => {
+    setCountryName(name);
+    console.log(countryName);
+  };
 
   useEffect(() => {
     let tempData = [];
@@ -53,13 +59,13 @@ function App() {
   }
 
   const clickHandler = () => {
-    fetchAPI(userInput.current.value);
+    fetchAPI(countryName);
   };
 
   return (
     <div>
       {/* <input type="text" ref={userInput} /> */}
-      <SearchBar />
+      <SearchBar getCountryName={changeCountryName} />
       <label htmlFor="from">From</label>
       <input type="date" id="from" ref={from} />
       <label htmlFor="to">To</label>
