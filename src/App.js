@@ -4,8 +4,10 @@ import SearchBar from "./components/SearchBar";
 import Form from "./components/Form";
 import Chart from "./components/Chart";
 import styles from "./App.module.css";
-import covid from "./assets/img/covid.jpg";
+
 import Footer from "./components/Footer";
+import { InputDataProvider } from "./context/ContextProvider";
+import FrontPage from "./components/FrontPage";
 function App() {
   //Use States
   const [allData, setAllData] = useState([]);
@@ -62,30 +64,25 @@ function App() {
   };
   // interval={"preserveStartEnd"}
   return (
-    <div>
-      {allData.length === 0 ? (
-        <div className={styles.front_page}>
-          <img src={covid} alt="" />
-          <h1>World COVID Tracker</h1>
-          <p>
-            Please enter the country name and start and ending date to visualize
-            covid data. You can see data upto 3 months
-          </p>
+    <InputDataProvider>
+      <div>
+        {allData.length === 0 ? (
+          <FrontPage />
+        ) : (
+          <div className={styles.graph}>
+            <h1>{countryName}</h1>
+            <Chart data={filterData} />
+          </div>
+        )}
+        <div className={styles.form_wrapper}>
+          <div className={styles.form_container}>
+            <SearchBar getCountryName={changeCountryName} />
+            <Form onSubmitHandler={clickHandler} />
+          </div>
         </div>
-      ) : (
-        <div className={styles.graph}>
-          <h1>{countryName}</h1>
-          <Chart data={filterData} />
-        </div>
-      )}
-      <div className={styles.form_wrapper}>
-        <div className={styles.form_container}>
-          <SearchBar getCountryName={changeCountryName} />
-          <Form onSubmitHandler={clickHandler} />
-        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </InputDataProvider>
   );
 }
 

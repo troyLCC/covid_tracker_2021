@@ -16,18 +16,7 @@
   width: 100%;
   bottom: 100px;
 }
-.front_page h1 {
-  text-align: center;
-}
-.front_page p {
-  text-align: center;
-}
-.front_page img {
-  width: 400px;
-  display: block;
-  margin: 0 auto;
-  padding-top: 120px;
-}
+
 .graph h1 {
   text-align: center;
   margin: 50px 0;

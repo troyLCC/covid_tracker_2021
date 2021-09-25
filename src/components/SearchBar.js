@@ -1,7 +1,11 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useContext } from "react";
 import { CountryData } from "../data/CountryData";
 import styles from "./SearchBar.module.css";
+import { DataContext } from "../context/ContextProvider";
 const SearchBar = (props) => {
+  // const [countryName, setCountryName] = useState("");
+  const { setData } = useContext(DataContext);
+
   return (
     <Fragment>
       <input
@@ -9,8 +13,8 @@ const SearchBar = (props) => {
         list="suggestions"
         placeholder="Search Country"
         onChange={(event) => {
+          setData({ countryName: event.target.value });
           props.getCountryName(event.target.value);
-          console.log(event.target.value);
         }}
       />
 
