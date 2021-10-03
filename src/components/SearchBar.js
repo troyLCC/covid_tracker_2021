@@ -21,13 +21,15 @@ const SearchBar = (props) => {
       <datalist id="suggestions">
         {CountryData.map((country) => {
           return (
+            <select className={styles.select}>
             <option className={styles.option} value={country.Country}>
               {country.Country}
             </option>
+            </select>
           );
         })}
       </datalist>
-      {/* {country==="" && <div>Please Choose a Valid Country name</div>} */}
+    
     </Fragment>
   );
 };

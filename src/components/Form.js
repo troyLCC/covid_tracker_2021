@@ -17,10 +17,10 @@ const Form = (props) => {
           fromDate: from,
           toDate: to,
         });
-    if(countryName !== "" && fromDate !=="" && toDate !== ""){
+    if( fromDate && toDate){
       props.onSubmitHandler(from.current.value, to.current.value);
     }else {
-      console.log('noti');
+      
     }
         
   }
@@ -41,7 +41,7 @@ const Form = (props) => {
       <input type="date" className={styles.date1} ref={from} onChange={e => onChangeFromHandler(e)}/>
      
       <input type="date" id="ending-to" className={styles.date2} ref={to} />
-      <button className={styles.button} disabled={isValid}>
+      <button className={!isValid? styles.inactive : styles.active}disabled={!isValid}>
         Fetch Data
       </button>
     </form>

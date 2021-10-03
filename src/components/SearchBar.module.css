@@ -1,20 +1,29 @@
 input[list="suggestions"] {
-  width: 350px;
-  height: 50px;
+  width: 400px;
+  height: 40px;
   /* margin-right: 40px; */
   font-size: 18px;
-  border: 2px solid #4a2545;
+  border: 1px solid rgb(218, 73, 54);
   border-radius: 50px;
   padding: 2px 20px;
+ 
 }
 input[list="suggestions"]::placeholder {
-  color: #8b637f;
+  color: rgba(243, 72, 50, 0.63);
 }
-input[list="suggestions"]::-webkit-scrollbar-thumb {
-  color: yellowgreen;
-  background-color: darksalmon;
+input[list="suggestions"]:active, input[list="suggestions"]:focus {
+  outline: 1px solid rgb(218, 73, 54);
+  
 }
+
 .input_wrapper {
   display: block;
   margin: 0 auto;
+  position: relative;
+}
+
+@media screen and (max-width: 700px) {
+  input[list="suggestions"] {
+    padding: 2px 20px;
+  }
 }

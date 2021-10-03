@@ -1,3 +1,6 @@
+.front_page {
+  margin-top: 150px;
+}
 .front_page h1 {
   text-align: center;
 }
@@ -11,4 +14,7 @@
   padding-top: 120px;
  
   
+}
+.svg {
+
 }

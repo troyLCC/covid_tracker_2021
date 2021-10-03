@@ -10,7 +10,7 @@ const FrontPage = () => {
   const to = data.toDate;
   return (
     <div className={styles.front_page}>
-     <COVIDSVG />
+     <COVIDSVG className={styles.svg}/>
       <h1>COVID-19 Cases Tracker</h1>
       
       

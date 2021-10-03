@@ -4,9 +4,9 @@ export const DataContext = createContext();
 
 export const InputDataProvider = (props) => {
   const [data, setData] = useState({
-    countryName: "",
-    fromDate: "",
-    toDate: "",
+    countryName: false,
+    fromDate: false,
+    toDate: false,
     isCountryValid: "",
     isToDateValid: "",
     isFromDateValid: "",
