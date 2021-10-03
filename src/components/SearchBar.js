@@ -4,8 +4,8 @@ import styles from "./SearchBar.module.css";
 import { DataContext } from "../context/ContextProvider";
 const SearchBar = (props) => {
   // const [countryName, setCountryName] = useState("");
-  const { setData } = useContext(DataContext);
-
+  const { data, setData } = useContext(DataContext);
+  const country = data.countryName
   return (
     <Fragment>
       <input
@@ -27,6 +27,7 @@ const SearchBar = (props) => {
           );
         })}
       </datalist>
+      {/* {country==="" && <div>Please Choose a Valid Country name</div>} */}
     </Fragment>
   );
 };

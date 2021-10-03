@@ -5,26 +5,41 @@ import { CountryData } from "../data/CountryData";
 const Form = (props) => {
   const from = useRef("");
   const to = useRef("");
-  const [isValid, setIsValid] = useState(false);
+  
   const { data, setData } = useContext(DataContext);
   const countryName = data.countryName;
   const fromDate = data.fromDate;
   const toDate = data.toDate;
-
-  return (
-    <form
-      className={styles.form}
-      onSubmit={(e) => {
-        e.preventDefault();
+  const [isValid, setIsValid] = useState("")
+  const SubmitHandler = (e)=> {
+    e.preventDefault();
         setData({
           fromDate: from,
           toDate: to,
         });
-        props.onSubmitHandler(from.current.value, to.current.value);
+    if(countryName !== "" && fromDate !=="" && toDate !== ""){
+      props.onSubmitHandler(from.current.value, to.current.value);
+    }else {
+      console.log('noti');
+    }
+        
+  }
+  const onChangeFromHandler =(e)=> {
+    if(fromDate === ""){
+      setIsValid(false)
+    }else {
+      setIsValid(true)
+    }
+  }
+  return (
+    <form
+      className={styles.form}
+      onSubmit={(e) => {
+        SubmitHandler(e)
       }}
     >
-      <input type="date" className={styles.date1} ref={from} />
-
+      <input type="date" className={styles.date1} ref={from} onChange={e => onChangeFromHandler(e)}/>
+     
       <input type="date" id="ending-to" className={styles.date2} ref={to} />
       <button className={styles.button} disabled={isValid}>
         Fetch Data
